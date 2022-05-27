@@ -42,6 +42,7 @@
                 payment = 25
             },
         },
+	},
 ```
 
 - add the following to your "server.cfg" : ensure rsg_railroadjob
