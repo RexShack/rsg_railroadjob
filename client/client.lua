@@ -1,6 +1,4 @@
 
-
-
 Citizen.CreateThread(function()
 	exports['qbr-core']:createPrompt('valentine-station', vector3(-162.8994, 638.43988, 114.03205), 0xF3830D8E, 'Railroad Menu', {
 		type = 'client',
@@ -115,8 +113,6 @@ Citizen.CreateThread(function()
 					if distance < stops[i]["dst2"] then
 						SetTrainCruiseSpeed(CURRENT_TRAIN, stopspeed)
 						Wait(stops[i]["time"])
-						TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 10, 'allaboard', 1.0)
-						Wait(10000)
 						SetTrainCruiseSpeed(CURRENT_TRAIN, cruisespeed)
 						Wait(10000)
 					end
@@ -131,19 +127,29 @@ end)
 
 -- delete train
 RegisterCommand('deletetrain', function()
-    DeleteEntity(CURRENT_TRAIN)
-	trainspawned = false
-	trainrunning = false
+	PlayerJob = exports['qbr-core']:GetPlayerData().job.name
+	if PlayerJob == 'railroad' then
+		DeleteEntity(CURRENT_TRAIN)
+		trainspawned = false
+		trainrunning = false
+	else
+		exports['rsg_notify']:DisplayNotification('you do not work for the railroad!', 5000)
+	end
 end)
 
 -- reset train
 RegisterCommand('resettrain', function()
-    DeleteEntity(CURRENT_TRAIN)
-	trainspawned = false
-	trainrunning = false
-	DoScreenFadeOut(500)
-	Wait(1000)
-	Citizen.InvokeNative(0x203BEFFDBE12E96A, PlayerPedId(), -163.1477, 637.15832, 114.03209 -1, 337.03866)
-	Wait(1000)
-	DoScreenFadeIn(500)
+	PlayerJob = exports['qbr-core']:GetPlayerData().job.name
+	if PlayerJob == 'railroad' then
+		DeleteEntity(CURRENT_TRAIN)
+		trainspawned = false
+		trainrunning = false
+		DoScreenFadeOut(500)
+		Wait(1000)
+		Citizen.InvokeNative(0x203BEFFDBE12E96A, PlayerPedId(), -163.1477, 637.15832, 114.03209 -1, 337.03866)
+		Wait(1000)
+		DoScreenFadeIn(500)
+	else
+		exports['rsg_notify']:DisplayNotification('you do not work for the railroad!', 5000)
+	end
 end)
