@@ -22,7 +22,6 @@
 # Dependencies
 - qbr-core -- https://github.com/qbcore-redm-framework/qbr-core
 - qbr-menu -- https://github.com/qbcore-redm-framework/qbr-menu
-- rsg_notify -- https://github.com/RexShack/rsg_notify
 
 # Installation
 - ensure the above dependancies are installed and started

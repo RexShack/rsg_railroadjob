@@ -87,10 +87,10 @@ AddEventHandler('rsg_railroadjob:client:spawntrain', function(data)
 			trainspawned = true
 			trainrunning = true
 		else
-			exports['rsg_notify']:DisplayNotification('train is already out, check map!', 5000)
+			exports['qbr-core']:Notify(9, 'train is already out, check map!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 		end
 	else
-		exports['rsg_notify']:DisplayNotification('you do not work for the railroad!', 5000)
+		exports['qbr-core']:Notify(9, 'you do not work for the railroad!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 	end
 end)
 
@@ -133,7 +133,7 @@ RegisterCommand('deletetrain', function()
 		trainspawned = false
 		trainrunning = false
 	else
-		exports['rsg_notify']:DisplayNotification('you do not work for the railroad!', 5000)
+		exports['qbr-core']:Notify(9, 'you do not work for the railroad!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 	end
 end)
 
@@ -150,6 +150,6 @@ RegisterCommand('resettrain', function()
 		Wait(1000)
 		DoScreenFadeIn(500)
 	else
-		exports['rsg_notify']:DisplayNotification('you do not work for the railroad!', 5000)
+		exports['qbr-core']:Notify(9, 'you do not work for the railroad!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 	end
 end)
